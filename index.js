@@ -37,7 +37,8 @@ var readProxiesFromFile = function(file, callback) {
  */
 var checkProxy = function(host, port, options, callback) {
 	var proxyRequest = request.defaults({
-		proxy: 'http://' + host + ':' + port
+		proxy: 'http://' + host + ':' + port,
+		timeout: options.timeout || 30000
 	});
 	proxyRequest(options.url, function(err, res) {
 		var testText = 'content="Yelp"';
